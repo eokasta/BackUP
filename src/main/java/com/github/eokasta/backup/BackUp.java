@@ -1,7 +1,6 @@
 package com.github.eokasta.backup;
 
 import com.github.eokasta.backup.utils.Helper;
-import org.bukkit.Bukkit;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,10 +29,10 @@ public class BackUp {
 
     }
 
-    public void backupServer() {
+    public File backupServer() {
         if (inBackup) {
             plugin.getLogger().log(Level.INFO, "A backup is already being made, please wait.");
-            return;
+            return null;
         }
 
         plugin.getLogger().log(Level.INFO, "Backup is starting...");
@@ -52,11 +51,11 @@ public class BackUp {
             fos.close();
 
             plugin.getLogger().log(Level.INFO, String.format("A new Backup was created. (%s)", archiveName));
-
+            return new File(plugin.getBackupFolder().getAbsolutePath() + "/" + archiveName);
         } catch (Exception e) {
             plugin.getLogger().log(Level.SEVERE, "A error occurred while backing up.");
             e.printStackTrace();
-
+            return null;
         } finally {
             setInBackup(false);
         }

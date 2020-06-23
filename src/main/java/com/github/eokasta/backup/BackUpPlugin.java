@@ -1,5 +1,6 @@
 package com.github.eokasta.backup;
 
+import com.github.eokasta.backup.ftp.FTPManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -20,7 +21,15 @@ public class BackUpPlugin extends JavaPlugin {
          Test
          */
         getLogger().log(Level.INFO, "Starting Backup in 20 seconds.");
-        backUp.backupServer();
+        final File file = backUp.backupServer();
+        if (file != null) {
+            FTPManager ftp = new FTPManager(file,
+                    "198.187.29.196",
+                    21,
+                    "lucastest@tchauhost.com",
+                    "r7os2g6icd");
+            ftp.upload();
+        }
     }
 
     @Override
