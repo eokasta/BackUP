@@ -67,6 +67,9 @@ public class BackUp {
             return;
         }
         if (fileToZip.isDirectory()) {
+            plugin.getLogger().info(fileToZip.getName());
+            if (fileToZip.getName().equals("cache")) return;
+
             if (fileName.endsWith("/")) {
                 zipOut.putNextEntry(new ZipEntry(fileName));
                 zipOut.closeEntry();
