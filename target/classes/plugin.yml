@@ -1,0 +1,11 @@
+name: BackUP
+version: 1.0-SNAPSHOT
+description: Template plugin
+author: Lucas Monteiro
+website: https://github.com/eokasta
+
+main: com.github.eokasta.backup.BackUpPlugin
+
+commands:
+  backup:
+    description: Backup manager command

@@ -1,0 +1,11 @@
+name: ${artifactId}
+version: ${version}
+description: ${description}
+author: ${author}
+website: ${authorWebsite}
+
+main: ${mainClass}
+
+commands:
+  backup:
+    description: Backup manager command
